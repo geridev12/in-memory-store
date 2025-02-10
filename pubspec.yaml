@@ -1,0 +1,13 @@
+name: in_memory_store
+description: A high-performance, in-memory data store for Dart, designed for rapid access and efficient caching.
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  collection: ^1.19.0
+
+dev_dependencies:
+  test: ^1.24.0
+  very_good_analysis: ^7.0.0
