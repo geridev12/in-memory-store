@@ -25,9 +25,6 @@ void main() {
       hashMapStopwatch.stop();
       final hashMapInsertionTime = hashMapStopwatch.elapsedMicroseconds;
 
-      print('Map insertion time: $mapInsertionTime µs');
-      print('HashMap insertion time: $hashMapInsertionTime µs');
-
       expect(hashMapInsertionTime, lessThan(mapInsertionTime));
 
       mapStopwatch
@@ -47,9 +44,6 @@ void main() {
       }
       hashMapStopwatch.stop();
       final hashMapRetrievalTime = hashMapStopwatch.elapsedMicroseconds;
-
-      print('Map retrieval time: $mapRetrievalTime µs');
-      print('HashMap retrieval time: $hashMapRetrievalTime µs');
 
       expect(
         hashMapRetrievalTime,
