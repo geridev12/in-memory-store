@@ -1,9 +1,9 @@
 name: in_memory_store
-description: A high-performance, in-memory data store for Dart, designed for rapid access and efficient caching.
+description: A high-performance, in-memory data store for Dart with LRU eviction, batch operations, and optimized memory management for large datasets.
 version: 2.0.0
 repository: https://github.com/geridev12/in-memory-store.git
 homepage: https://github.com/geridev12/in-memory-store.git
-topics: [cache, memory]
+topics: [cache, memory, performance, large-datasets, lru]
 
 platforms:
   android:
