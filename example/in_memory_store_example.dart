@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, cascade_invocations
+// ignore_for_file: avoid_print
 
 import 'package:in_memory_store/in_memory_store.dart';
 
@@ -17,8 +17,7 @@ void basicUsage() {
   // Cache with expiry
   final cacheWithExpiry = InMemoryStore<String, String>.withExpiry(
     expiryDuration: const Duration(seconds: 5),
-  );
-  cacheWithExpiry.insert('user1', 'John Doe');
+  )..insert('user1', 'John Doe');
   print('Inserted: user1 -> John Doe');
 
   Future<void>.delayed(
@@ -29,8 +28,8 @@ void basicUsage() {
   );
 
   // Persistent cache
-  final persistentCache = InMemoryStore<String, int>.persistent();
-  persistentCache.insert('score', 100);
+  final persistentCache = InMemoryStore<String, int>.persistent()
+    ..insert('score', 100);
   print('Inserted: score -> 100');
   print('Retrieved: score -> ${persistentCache.get('score')}');
 
@@ -78,28 +77,29 @@ void largeDatasetUsage() {
 
 void advancedFeatures() {
   // Store with memory limits and LRU eviction
-  final limitedStore = InMemoryStore<String, String>.persistent(maxEntries: 5);
+  final limitedStore = InMemoryStore<String, String>.persistent(maxEntries: 5)
 
-  // Fill beyond capacity
-  limitedStore.insertAll({
-    'key1': 'value1',
-    'key2': 'value2',
-    'key3': 'value3',
-    'key4': 'value4',
-    'key5': 'value5',
-  });
+    // Fill beyond capacity
+    ..insertAll({
+      'key1': 'value1',
+      'key2': 'value2',
+      'key3': 'value3',
+      'key4': 'value4',
+      'key5': 'value5',
+    });
 
   print('Store length after filling to capacity: ${limitedStore.length}');
 
   // Access some keys to make them recently used
-  limitedStore.get('key1');
-  limitedStore.get('key2');
+  limitedStore
+    ..get('key1')
+    ..get('key2')
 
-  // Add more entries - should trigger LRU eviction
-  limitedStore.insertAll({
-    'key6': 'value6',
-    'key7': 'value7',
-  });
+    // Add more entries - should trigger LRU eviction
+    ..insertAll({
+      'key6': 'value6',
+      'key7': 'value7',
+    });
 
   print('Store length after adding more entries: ${limitedStore.length}');
   print('Recently used key1 still exists: ${limitedStore.containsKey('key1')}');
